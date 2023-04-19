@@ -3,8 +3,13 @@ package com.bl.addressbook.Addressbook.model;
 import com.bl.addressbook.Addressbook.dto.ContactDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-
+@Getter
+@Setter
+@ToString
 public class Contacts {
 
     private int id;
@@ -24,63 +29,5 @@ public class Contacts {
         this.mobileNumber = contactDTO.mobileNumber;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Long getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(Long mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Contacts{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", mobileNumber=" + mobileNumber +
-                '}';
-    }
 }
