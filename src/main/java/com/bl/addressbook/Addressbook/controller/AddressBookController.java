@@ -3,6 +3,7 @@ package com.bl.addressbook.Addressbook.controller;
 import com.bl.addressbook.Addressbook.dto.ContactDTO;
 import com.bl.addressbook.Addressbook.model.Contacts;
 //import com.bl.addressbook.Addressbook.repository.ContactsRepo;
+import com.bl.addressbook.Addressbook.services.IAddressBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,38 +16,33 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/AddressBook")
 public class AddressBookController {
-    List<Contacts> contactsList = new ArrayList<>();
+   Autowired
+    private IAddressBook iAddressBook;
 
     @PostMapping("/save")
-    public ResponseEntity<String> addContact(@RequestBody ContactDTO contactDTO){
-        Contacts data = new Contacts(contactDTO);
-
-        contactsList.add(data);
-        return new ResponseEntity<>("Contact save Successfully "+contactDTO.firstName+" "+contactDTO.lastName+" "
-                +contactDTO.address+" "+contactDTO.city+" "+contactDTO.mobileNumber, HttpStatus.CREATED);
+    public String addContact(@RequestBody ContactDTO contactDTO){
+        return iAddressBook.addContact(contactDTO);
     }
 
     @GetMapping("/Get/{id}")
-    public Contacts getContactsById(@PathVariable int id){
-        Contacts contacts = contactsList.get(id);
-
-        return contacts;
+    public String getContactsById(@PathVariable int id){
+        return iAddressBook.getContactByID(id);
     }
     @GetMapping("/GetAll")
     public String getAllContacts(){
-        return contactsList.toString();
+        return iAddressBook.getAllContact();
     }
     @PutMapping("Edit/{id}")
     public String editContactById(@PathVariable int id){
-        return "id"+id;
+        return iAddressBook.updateContactDetailsByID(id);
     }
     @DeleteMapping("/Delete/{id}")
     public String deleteContactById(@PathVariable int id){
-        return "Contact has been deleted";
+        return iAddressBook.deleteContactByID(id);
     }
     @DeleteMapping("/DeleteAll")
     public String deleteAllContacts(){
-        return "All contacts has been deleted" ;
+        return iAddressBook.deleteAllContact();
     }
 
 
