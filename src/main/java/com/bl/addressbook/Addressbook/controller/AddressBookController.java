@@ -16,7 +16,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/AddressBook")
 public class AddressBookController {
-   Autowired
+
+    @Autowired
     private IAddressBook iAddressBook;
 
     @PostMapping("/save")

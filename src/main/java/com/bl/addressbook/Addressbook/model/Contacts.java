@@ -4,9 +4,9 @@ import com.bl.addressbook.Addressbook.dto.ContactDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 
-@Entity
+
 public class Contacts {
-    @GeneratedValue
+
     private int id;
     private String firstName;
     private String lastName;
@@ -22,6 +22,14 @@ public class Contacts {
         this.address = contactDTO.address;
         this.city =contactDTO.city;
         this.mobileNumber = contactDTO.mobileNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
