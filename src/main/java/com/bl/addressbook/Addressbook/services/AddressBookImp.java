@@ -2,9 +2,10 @@ package com.bl.addressbook.Addressbook.services;
 
 import com.bl.addressbook.Addressbook.dto.ContactDTO;
 import com.bl.addressbook.Addressbook.model.Contacts;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
-
+@Service
 public class AddressBookImp implements IAddressBook{
     LinkedList<Contacts> contactList = new LinkedList<>();
     @Override
